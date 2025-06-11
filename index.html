@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clint Penaflor | Web Developer Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Pre-Loader custom made by clint. -->
+<div id="loader-wrapper">
+  <div id="loader"></div>
+  <div class="loader-section section-left"></div>
+  <div class="loader-section section-right"></div>
+</div>
+
+    <!-- Custom Cursor made by clint. -->
+    <div class="cursor" id="cursor"></div>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+        <a href="#home" class="logo" data-section="home">CJ</a>
+        <div class="nav-links">
+            <a href="#home" class="nav-link active" data-section="home">HOME</a>
+            <a href="#about" class="nav-link" data-section="about">ABOUT</a>
+            <a href="#work" class="nav-link" data-section="work">WORK</a>
+            <a href="#contact" class="nav-link" data-section="contact">CONTACT</a>
+        </div>
+        <div class="social-links">
+            <a href="https://github.com" target="_blank" class="social-link">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="social-link">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:your-email@example.com" class="social-link">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- PS.Optional Mobile Sir, I want to see it from Mobile Interaction for my Future Works. -->
+
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-nav-links">
+            <a href="#home" class="mobile-nav-link" data-section="home">HOME</a>
+            <a href="#about" class="mobile-nav-link" data-section="about">ABOUT</a>
+            <a href="#work" class="mobile-nav-link" data-section="work">WORK</a>
+            <a href="#contact" class="mobile-nav-link" data-section="contact">CONTACT</a>
+        </div>
+        <div class="mobile-social-links">
+            <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:your-email@example.com"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">
+                            <span class="highlight">Hello, I'm</span> Clint Penaflor.
+                        </h1>
+                        <p class="hero-subtitle">
+                            I'm a student of<span class="highlight"> National University Clark</span>, an Information Technology Student with passionate about creating
+                            interactive digital experiences.
+                        </p>
+                        <button class="cta-button" data-section="work">
+                            View my work
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    <div class="profile-image-container">
+                        <div class="profile-image-wrapper">
+                            <img src="clint.jpg" alt="Clint Penaflor" class="profile-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title"><br><br>About Me</h2>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>I'm a passionate IT Student that loves developing something with a strong focus on creating beautiful, functional, and user-friendly websites and applications.</p>
+                        <p>With over 4 years of experience in web development since Senior Highschool, I've worked with a variety of technologies and frameworks to deliver high-quality digital solutions.</p>
+                        <p>I'm constantly learning and exploring new technologies to stay at the forefront of web development.</p>
+                    </div>
+                    <div class="skills">
+                    <h3>Skills</h3>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>HTML</span>
+                        <span>95%</span>
+                </div>
+                 <div class="skill-bar">
+            <div class="skill-progress" data-width="95"></div>
+        </div>
+    </div>
+    <div class="skill-item">
+        <div class="skill-info">
+            <span>CSS</span>
+            <span>85%</span>
+        </div>
+        <div class="skill-bar">
+            <div class="skill-progress" data-width="85"></div>
+        </div>
+    </div>
+    <div class="skill-item">
+        <div class="skill-info">
+            <span>JavaScript</span>
+            <span>70%</span>
+        </div>
+        <div class="skill-bar">
+            <div class="skill-progress" data-width="70"></div>
+        </div>
+    </div>
+    <div class="skill-item">
+        <div class="skill-info">
+            <span>Kotlin</span>
+            <span>75%</span>
+        </div>
+        <div class="skill-bar">
+            <div class="skill-progress" data-width="75"></div>
+        </div>
+    </div>
+    <div class="skill-item">
+        <div class="skill-info">
+            <span>C++</span>
+            <span>70%</span>
+        </div>
+        <div class="skill-bar">
+            <div class="skill-progress" data-width="70"></div>
+        </div>
+    </div>
+    <div class="skill-item">
+        <div class="skill-info">
+            <span>NodeJS</span>
+            <span>60%</span>
+        </div>
+        <div class="skill-bar">
+            <div class="skill-progress" data-width="60"></div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Section -->
+        <section id="work" class="section">
+    <div class="container">
+        <h2 class="section-title">My Work Activities & Group Project</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="Eyeofthetiger.png" alt="Eye of the tiger">
+                    <div class="project-overlay">
+                        <button class="project-btn">View Activity</button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>EYE OF THE TIGER</h3>
+                    <p class="project-description">A lyrics of song with a colorful design.</p>
+                    
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="wolist.png" alt="Resume w/o list">
+                    <div class="project-overlay">
+                        <button class="project-btn">View Activity</button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>RESUME WITHOUT LIST</h3>
+                    <p class="project-description">A resume without a list.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="wlist.png" alt="Resume w/ list">
+                    <div class="project-overlay">
+                        <button class="project-btn">View Activity</button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>RESUME WITH LIST</h3>
+                    <p class="project-description">A resume with a list and better design.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="MappingArea.png" alt="Mapping Area">
+                    <div class="project-overlay">
+                        <button class="project-btn">View Activity</button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>MAPPING AREA</h3>
+                    <p class="project-description">A clickable images that will direct you to an specific item.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="Colrow.png" alt="Table and Forms">
+                    <div class="project-overlay">
+                        <button class="project-btn">View Activity</button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>TABLE COL & ROW SPAN + FORMS</h3>
+                    <p class="project-description">A Table with a colspan and rowspan layout and a forms of interactives button and radio.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="Calendarnodiv.png" alt="Calendar w/o div">
+                    <div class="project-overlay">
+                        <button class="project-btn">View Activity</button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>CALENDAR WITHOUT DIV</h3>
+                    <p class="project-description">A Calendar without div and a interactive buttons.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="Calendardiv.png" alt="Calendar w/ div">
+                    <div class="project-overlay">
+                        <button class="project-btn">View Activity</button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>CALENDAR WITH DIV</h3>
+                    <p class="project-description">A Calendar with a div and a interactive buttons and improve designs.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="NUQUEST.png" alt="NU Quest">
+                    <div class="project-overlay">
+                        <button class="project-btn">View Activity</button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>NU QUEST</h3>
+                    <p class="project-description">A NU Quest Replicate but with different designs and color.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="NAVBAR.png" alt="Navigation Bar">
+                    <div class="project-overlay">
+                        <button class="project-btn">View Activity</button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>NAVIGATION BAR</h3>
+                    <p class="project-description">A Navigation with animation, transition.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="Tottoweb.png" alt="Totto Ramen">
+                    <div class="project-overlay">
+                        <button class="project-btn">View Project</button>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h3>TOTTO RAMEN</h3>
+                    <p class="project-description">A Totto Ramen website replicate with different designs and hover transition.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <p>I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.</p>
+                        <div class="contact-links">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:your-email@example.com">your-email@example.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fab fa-linkedin"></i>
+                                <a href="https://linkedin.com" target="_blank">linkedin.com/in/yourname</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fab fa-github"></i>
+                                <a href="https://github.com" target="_blank">github.com/yourname</a>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            Send Message
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
