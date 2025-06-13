@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clint Joseph B. Penaflor - Eye of the Tiger</title>
+    <link rel="icon" type="x-icon" href="cj.ico">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy-950: #121633;
+            --navy-900: #1a1f42;
+            --navy-800: #252a52;
+            --purple-400: #a78bfa;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-700: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--navy-950), var(--navy-900));
+            color: white;
+            min-height: 100vh;
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Animated background elements */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-note {
+            position: absolute;
+            color: rgba(167, 139, 250, 0.1);
+            font-size: 2rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-note:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .floating-note:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
+        .floating-note:nth-child(3) { top: 60%; left: 5%; animation-delay: 2s; }
+        .floating-note:nth-child(4) { top: 70%; right: 10%; animation-delay: 3s; }
+        .floating-note:nth-child(5) { top: 40%; left: 80%; animation-delay: 4s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.1; }
+            50% { transform: translateY(-20px) rotate(10deg); opacity: 0.3; }
+        }
+
+        .back-btn {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(45deg, #ff6b6b, var(--purple-400), #4158d0);
+            background-size: 200% 200%;
+            padding: 12px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        }
+
+        .back-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.5);
+            background-position: right center;
+            text-decoration: none;
+            color: white;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: bold;
+            margin-bottom: 50px;
+            background: linear-gradient(45deg, var(--purple-400), #ff6b6b, #4158d0, #f9c922);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 300% 300%;
+            animation: gradientShift 4s ease infinite, fadeInUp 1s ease;
+            text-shadow: 0 0 30px rgba(167, 139, 250, 0.3);
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(45deg, var(--purple-400), #ff6b6b, #4158d0);
+            border-radius: 2px;
+            animation: gradientShift 4s ease infinite;
+        }
+
+        .lyrics-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .verse {
+            background: var(--navy-900);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease both;
+        }
+
+        .verse::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(45deg, var(--purple-400), #ff6b6b, #4158d0, #f9c922);
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .verse:hover::before {
+            opacity: 1;
+        }
+
+        .verse:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(167, 139, 250, 0.3);
+        }
+
+        .verse:nth-child(1) { animation-delay: 0.1s; }
+        .verse:nth-child(2) { animation-delay: 0.2s; }
+        .verse:nth-child(3) { animation-delay: 0.3s; }
+        .verse:nth-child(4) { animation-delay: 0.4s; }
+        .verse:nth-child(5) { animation-delay: 0.5s; }
+        .verse:nth-child(6) { animation-delay: 0.6s; }
+        .verse:nth-child(7) { animation-delay: 0.7s; }
+        .verse:nth-child(8) { animation-delay: 0.8s; }
+
+        .verse p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* Different gradient colors for each verse */
+        .verse:nth-child(1) p {
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .verse:nth-child(2) p {
+            background: linear-gradient(45deg, #deb887, #f4a460);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .verse:nth-child(3) p {
+            background: linear-gradient(45deg, #dda0dd, #ba55d3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .verse:nth-child(4) p {
+            background: linear-gradient(45deg, #afeeee, #40e0d0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .verse:nth-child(5) p {
+            background: linear-gradient(45deg, #ffff00, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .verse:nth-child(6) p {
+            background: linear-gradient(45deg, #ff00ff, #ff69b4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .verse:nth-child(7) p {
+            background: linear-gradient(45deg, #ffa500, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .verse:nth-child(8) p {
+            background: linear-gradient(45deg, #ff0000, #ff4500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            font-size: 1.4rem;
+        }
+
+        /* Music note icons */
+        .verse::after {
+            content: '\f001';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: rgba(167, 139, 250, 0.3);
+            font-size: 1.5rem;
+            animation: pulse 2s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+
+        /* Tiger eye effect */
+        .tiger-eye {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, #ffd700, #ff8c00, #ff4500);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: tigerEye 8s ease infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes tigerEye {
+            0%, 100% { 
+                opacity: 0.1; 
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% { 
+                opacity: 0.3; 
+                transform: translate(-50%, -50%) scale(1.5);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .back-btn {
+                top: 20px;
+                left: 20px;
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+
+            .container {
+                padding: 0 10px;
+            }
+
+            .verse {
+                padding: 20px;
+            }
+
+            .verse p {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+
+            .floating-note {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated background -->
+    <div class="bg-animation">
+        <div class="floating-note">♪</div>
+        <div class="floating-note">♫</div>
+        <div class="floating-note">♪</div>
+        <div class="floating-note">♫</div>
+        <div class="floating-note">♪</div>
+    </div>
+
+    <!-- Tiger eye effect -->
+    <div class="tiger-eye"></div>
+
+    <!-- Back button -->
+    <a href="index.html" class="back-btn">
+        <i class="fas fa-home"></i> Back to Portfolio
+    </a>
+
+    <div class="container">
+        <h1><i class="fas fa-music"></i> EYE OF THE TIGER!</h1>
+        
+        <div class="lyrics-container">
+            <div class="verse">
+                <p>
+                    Risin' up, back on the street<br>
+                    Did my time, took my chances<br>
+                    Went the distance, now I'm back on my feet<br>
+                    Just a man and his will to survive
+                </p>
+            </div>
+
+            <div class="verse">
+                <p>
+                    So many times, it happens too fast<br>
+                    You trade your passion for glory<br>
+                    Don't lose your grip on the dreams of the past<br>
+                    You must fight just to keep them alive
+                </p>
+            </div>
+
+            <div class="verse">
+                <p>
+                    It's the eye of the tiger, it's the thrill of the fight<br>
+                    Risin' up to the challenge of our rival<br>
+                    And the last known survivor stalks his prey in the night<br>
+                    And he's watching us all with the eye of the tiger
+                </p>
+            </div>
+
+            <div class="verse">
+                <p>
+                    Face to face, out on the heat<br>
+                    Hangin' tough, stayin' hungry<br>
+                    They stack the odds still we take to the street<br>
+                    For the kill, with the skill to survive
+                </p>
+            </div>
+
+            <div class="verse">
+                <p>
+                    It's the eye of the tiger, it's the thrill of the fight<br>
+                    Risin' up to the challenge of our rival<br>
+                    And the last known survivor stalks his prey in the night<br>
+                    And he's watching us all with the eye of the tiger
+                </p>
+            </div>
+
+            <div class="verse">
+                <p>
+                    Risin' up, straight to the top<br>
+                    Had the guts, got the glory<br>
+                    Went the distance, now I'm not gonna stop<br>
+                    Just a man and his will to survive
+                </p>
+            </div>
+
+            <div class="verse">
+                <p>
+                    It's the eye of the tiger, it's the thrill of the fight<br>
+                    Risin' up to the challenge of our rival<br>
+                    And the last known survivor stalks his prey in the night<br>
+                    And he's watching us all with the eye of the tiger
+                </p>
+            </div>
+
+            <div class="verse">
+                <p>
+                    The eye of the tiger<br>
+                    The eye of the tiger<br>
+                    The eye of the tiger<br>
+                    The eye of the tiger
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

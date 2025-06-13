@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clint Joseph B. Penaflor - Resume</title>
+    <link rel="icon" type="x-icon" href="cj.ico">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy-950: #121633;
+            --navy-900: #1a1f42;
+            --navy-800: #252a52;
+            --purple-400: #a78bfa;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-700: #374151;
+        }
+
+        /* Portfolio Navigation Styles */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 80px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--navy-900), var(--navy-800), var(--purple-400));
+            background-size: 300% 300%;
+            animation: gradientShift 8s ease infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 0;
+            z-index: 1000;
+            box-shadow: 2px 0 20px rgba(167, 139, 250, 0.2);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            background: linear-gradient(45deg, var(--purple-400), #ff6b6b, #4158d0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.5));
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .nav-link {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            padding: 10px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--purple-400), #ff6b6b, #4158d0);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--purple-400);
+            text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .social-link {
+            color: var(--gray-400);
+            font-size: 20px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            color: var(--purple-400);
+            filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.5));
+            transform: scale(1.1);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 1001;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, var(--navy-900), var(--navy-800), var(--purple-400));
+            background-size: 300% 300%;
+            animation: gradientShift 8s ease infinite;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateY(0);
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .mobile-nav-link {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 10px 0;
+        }
+
+        .mobile-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--purple-400), #ff6b6b, #4158d0);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .mobile-nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-nav-link:hover {
+            color: var(--purple-400);
+            text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+        }
+
+        .mobile-social-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .mobile-social-links a {
+            color: var(--gray-400);
+            font-size: 24px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .mobile-social-links a:hover {
+            color: var(--purple-400);
+            filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.5));
+            transform: scale(1.1);
+        }
+
+        /* Back to Portfolio Button */
+        .back-portfolio-btn {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(45deg, #ff6b6b, var(--purple-400), #4158d0);
+            background-size: 200% 200%;
+            padding: 12px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 1001;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .back-portfolio-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.5);
+            background-position: right center;
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Original Resume Styles with margin adjustment */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin-left: 80px; /* Space for sidebar */
+            padding: 20px;
+            background-color: white;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            body {
+                margin-left: 0;
+            }
+
+            .back-portfolio-btn {
+                top: 20px;
+                right: 70px;
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <a href="index.html" class="logo">CJ</a>
+        <div class="social-links">
+            <a href="https://github.com" target="_blank" class="social-link">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="social-link">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:clintpenaflor1005@gmail.com" class="social-link">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Back to Portfolio Button -->
+    <a href="index.html" class="back-portfolio-btn">
+        <i class="fas fa-home"></i> Back to Portfolio
+    </a>
+
+    <!-- Original Resume Content (unchanged) -->
+    <center><h1><u>R E S U M E</u></h1><br></center>
+    <h2 style="color:cornflowerblue;">Contact Information</h2>
+    <hr>
+    <p><b>Name:</b> Clint Joseph B. Penaflor</p>
+    <p><b>Age:</b> 20 years old</p>
+    <p><b>Birthdate:</b> October 05, 2004</p>
+    <p><b>Email:</b> <i>clintpenaflor1005@gmail.com</i></p>
+    <p><b>Contact Number:</b> 09555665469</p>
+    <p><b>Address:</b> BLK 48 LOT 18 Fiesta Communities, Phase 2, Mabalacat City</p><br>
+
+    <h2 style="color:cornflowerblue;">Objective</h2>
+    <hr>
+    <p><center>" Detail-oriented and passionate IT professional seeking an opportunity to apply my technical skills in software development, network management, and cybersecurity. Eager to contribute to a dynamic IT team where I can enhance business operations, troubleshoot complex issues, and innovate solutions that drive efficiency and security. "</center></p>
+    <br>
+
+    <h2 style="color:cornflowerblue;">Educational Background</h2>
+    <hr>
+    <p><b>Grade school:</b> Cabalantian Elementary School</p>
+    <p><b>Highschool:</b> Tinajero National Highschool Annex</p>
+    <p><b>Senior Highschool:</b> Christian Vision Academy</p>
+    <p><b>College:</b> National University Clark</p>
+    <p><b>Program:</b> Bachelor of Science in Information Technology</p>
+    <br>
+
+    <h2 style="color:cornflowerblue;">Skills</h2>
+    <hr>
+    <ul>
+        <li>Programming Languages: Python, Java, JavaScript, C++</li>
+        <li>Web Development: HTML, CSS, React, Node.js</li>
+        <li>Database Management: MySQL, PostgreSQL</li>
+        <li>Networking: TCP/IP, DNS, VPN Configuration</li>
+        <li>Cybersecurity: Ethical Hacking, Penetration Testing</li>
+        <li>Software Development: Agile Methodologies, Debugging</li>
+        <li>Problem-Solving and Analytical Thinking</li>
+        <li>Strong Communication and Team Collaboration</li>
+    </ul>
+    <br>
+
+    <h2 style="color:cornflowerblue;">Experience</h2>
+    <hr>
+    <ul>
+        <li><b>Realty Home Seller – [Fiesta Communities]</b><br>
+            Assisted in the sales of houses and lots in the community. Provided excellent customer service to clients and ensured timely
+        </li><br>
+        <li><b>Freelance Web Developer</b><br>
+            Designed and developed responsive websites using <b>HTML, CSS, and JavaScript</b> for small business clients.
+        </li>
+    </ul>
+    <br>
+
+    <h2 style="color:cornflowerblue;">Projects</h2>
+    <hr>
+    <ul>
+        <li><b>Interactive Family Tree Web App</b><br>
+            Developed a dynamic web application that allows users to create and explore interactive family trees using <b>JavaScript and HTML/CSS</b>.
+        </li><br>
+        <li><b>Cybersecurity Awareness Website</b><br>
+            Created a website to educate users on best practices for online security, including phishing detection and password management.
+        </li><br>
+        <li><b>Inventory Management System</b><br>
+            Built a system to help small businesses track inventory, manage stock levels, and generate reports using MySQL and PHP.
+        </li><br>
+    </ul>
+    <br>
+
+    <h2 style="color:cornflowerblue;">Certifications or Awards</h2>
+    <hr>
+    <ul>
+        <li><b>Cisco Certified Network Associate (CCNA)</b><br>
+            Earned certification in networking fundamentals, IP connectivity, security fundamentals, and automation.
+        </li><br>
+        <li><b>CompTIA Security+ Certification</b><br>
+            Demonstrated expertise in cybersecurity, risk management, and network security.
+        </li><br>
+        <li><b>Certified Web Developer</b><br>
+            Completed a professional certification in full-stack web development, covering front-end and back-end technologies.
+        </li>
+    </ul>
+    <br>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on links
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

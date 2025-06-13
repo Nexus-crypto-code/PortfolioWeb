@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penaflor, Clint - Modern Calendar 2025</title>
+    <link rel="icon" type="x-icon" href="cj.ico">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy-950: #121633;
+            --navy-900: #1a1f42;
+            --navy-800: #252a52;
+            --purple-400: #a78bfa;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-700: #374151;
+        }
+
+        /* Portfolio Navigation Styles */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 80px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--navy-900), var(--navy-800), var(--purple-400));
+            background-size: 300% 300%;
+            animation: gradientShift 8s ease infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px 0;
+            z-index: 1000;
+            box-shadow: 2px 0 20px rgba(167, 139, 250, 0.2);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            background: linear-gradient(45deg, var(--purple-400), #ff6b6b, #4158d0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.5));
+        }
+
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .nav-link {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            transform: rotate(180deg);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            padding: 10px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--purple-400), #ff6b6b, #4158d0);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--purple-400);
+            text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .social-link {
+            color: var(--gray-400);
+            font-size: 20px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            color: var(--purple-400);
+            filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.5));
+            transform: scale(1.1);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 1001;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, var(--navy-900), var(--navy-800), var(--purple-400));
+            background-size: 300% 300%;
+            animation: gradientShift 8s ease infinite;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateY(0);
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .mobile-nav-link {
+            color: var(--gray-400);
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 10px 0;
+        }
+
+        .mobile-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--purple-400), #ff6b6b, #4158d0);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .mobile-nav-link:hover::after {
+            width: 100%;
+        }
+
+        .mobile-nav-link:hover {
+            color: var(--purple-400);
+            text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+        }
+
+        .mobile-social-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .mobile-social-links a {
+            color: var(--gray-400);
+            font-size: 24px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .mobile-social-links a:hover {
+            color: var(--purple-400);
+            filter: drop-shadow(0 0 10px rgba(167, 139, 250, 0.5));
+            transform: scale(1.1);
+        }
+
+        /* Back to Portfolio Button */
+        .back-portfolio-btn {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(45deg, #ff6b6b, var(--purple-400), #4158d0);
+            background-size: 200% 200%;
+            padding: 12px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            font-weight: 500;
+            z-index: 1001;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .back-portfolio-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.5);
+            background-position: right center;
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Original Calendar Styles with adjustments */
+        body {
+            font-family: 'Georgia', serif;
+            padding: 20px;
+            background-color: #b4aeae;
+            color: #333;
+            margin-left: 80px; /* Space for sidebar */
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 52px;
+            color: #2c3e50;
+            margin-top: 30px;
+            font-weight: bold;
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            margin-top: 40px;
+            font-size: 26px;
+            text-align: center;
+            color: #444;
+            font-family: 'Georgia', serif;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px auto 40px auto;
+            max-width: 12000px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 200px;
+        }
+
+        .button-container a {
+            text-decoration: none;
+            color: #05ac3d;
+            font-weight: bold;
+            background-color: #ffffff;
+            padding: 14px 30px;
+            border-radius: 12px;
+            border: none;
+            font-size: 18px;
+            display: inline-block;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            font-family: 'Georgia', serif;
+        }
+
+        .button-container a:hover {
+            background-color: #ccd4ce;
+        }
+
+        .month-section {
+            margin-bottom: 60px;
+        }
+
+        .month-title {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+            background-color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .day-name, .day-cell {
+            text-align: center;
+            padding: 12px 6px;
+            font-weight: normal;
+            font-size: 16px;
+            border-radius: 6px;
+            min-height: 90px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            line-height: 1.2;
+        }
+
+        .day-name {
+            font-weight: bold;
+            background-color: #b8ff92;
+            color: #2c3e50;
+            user-select: none;
+        }
+
+        .day-cell {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            color: #333;
+            font-size: 14px;
+            position: relative;
+        }
+
+        .day-cell.empty {
+            background-color: transparent;
+            border: none;
+        }
+
+        .holiday {
+            background-color: #ffdddd;
+            font-weight: bold;
+            color: #a94442;
+            padding: 6px 8px;
+            border-radius: 6px;
+            width: 90%;
+            margin-top: 6px;
+            font-size: 13px;
+            line-height: 1.1;
+        }
+
+        .holiday-date {
+            font-weight: bold;
+            color: #a94442;
+            font-size: 16px;
+            margin-top: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            body {
+                margin-left: 0;
+                padding: 15px;
+            }
+
+            .back-portfolio-btn {
+                top: 20px;
+                right: 70px;
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+
+            h1 {
+                font-size: 36px;
+                margin-top: 20px;
+            }
+
+            .button-container {
+                padding-bottom: 100px;
+            }
+
+            .button-container a {
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+
+            .calendar-grid {
+                max-width: 100%;
+                padding: 10px;
+                gap: 4px;
+            }
+
+            .day-name, .day-cell {
+                min-height: 70px;
+                padding: 8px 4px;
+                font-size: 14px;
+            }
+
+            .holiday {
+                font-size: 11px;
+                padding: 4px 6px;
+            }
+
+            .holiday-date {
+                font-size: 14px;
+            }
+
+            .month-title {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            .button-container a {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+
+            .day-name, .day-cell {
+                min-height: 60px;
+                padding: 6px 2px;
+                font-size: 12px;
+            }
+
+            .holiday {
+                font-size: 10px;
+                padding: 3px 4px;
+            }
+
+            .holiday-date {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <a href="index.html" class="logo">CJ</a>
+        <div class="social-links">
+            <a href="https://github.com" target="_blank" class="social-link">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="social-link">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:clintpenaflor1005@gmail.com" class="social-link">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-nav-links">
+            <a href="index.html#home" class="mobile-nav-link">HOME</a>
+            <a href="index.html#about" class="mobile-nav-link">ABOUT</a>
+            <a href="index.html#work" class="mobile-nav-link">WORK</a>
+            <a href="index.html#contact" class="mobile-nav-link">CONTACT</a>
+        </div>
+        <div class="mobile-social-links">
+            <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:clintpenaflor1005@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
+
+    <!-- Back to Portfolio Button -->
+    <a href="index.html" class="back-portfolio-btn">
+        <i class="fas fa-home"></i> Back to Portfolio
+    </a>
+
+    <!-- Original Calendar Content (unchanged) -->
+    <h1>WELCOME TO CALENDAR 2025</h1>
+
+    <div class="button-container">
+        <a href="#jan">January</a>
+        <a href="#feb">February</a>
+        <a href="#mar">March</a>
+        <a href="#apr">April</a>
+        <a href="#may">May</a>
+        <a href="#jun">June</a>
+        <a href="#jul">July</a>
+        <a href="#aug">August</a>
+        <a href="#sep">September</a>
+        <a href="#oct">October</a>
+        <a href="#nov">November</a>
+        <a href="#dec">December</a>
+    </div>
+    <h1>HOLIDAYS</h1>
+    <br>
+    <div class="button-container">
+        <a href="#jan">New Year</a>
+        <a href="#jan">Isra Wal Mi'raj</a>
+        <a href="#jan">Chinese New Year</a>
+        <br>
+        <a href="#feb">Valentine's Day</a>
+        <a href="#feb">EDSA PPL POWER</a>
+        <br>
+        <a href="#mar">Maundy Thursday</a>
+        <a href="#mar">Good Friday</a>
+        <br>
+        <a href="#apr">Araw ng Kagitingan</a>
+        <br>
+        <a href="#may">Labor Day</a>
+        <br>
+        <a href="#jun">Independence Day</a>
+        <br>
+        <a href="#aug">Ninoy Aquino Day</a>
+        <a href="#aug">National Heroes Day</a>
+        <br>
+        <a href="#nov">Soul's Day</a>
+        <a href="#nov">Bonifacio Day</a>
+        <br>
+        <a href="#dec">Christmas Day</a>
+        <a href="#dec">Rizal Day</a>
+    </div>
+
+    <div id="jan" class="month-section">
+        <h2 class="month-title">January 2025</h2>
+        <div class="calendar-grid">
+            <div class="day-name">Sun</div><div class="day-name">Mon</div><div class="day-name">Tue</div><div class="day-name">Wed</div><div class="day-name">Thu</div><div class="day-name">Fri</div><div class="day-name">Sat</div>
+            <div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div>
+            <div class="day-cell"><div class="holiday-date">1</div><div class="holiday">New Year's Day</div></div>
+            <div class="day-cell">2</div><div class="day-cell">3</div><div class="day-cell">4</div>
+            <div class="day-cell">5</div><div class="day-cell">6</div><div class="day-cell">7</div><div class="day-cell">8</div><div class="day-cell">9</div><div class="day-cell">10</div><div class="day-cell">11</div>
+            <div class="day-cell">12</div><div class="day-cell">13</div><div class="day-cell">14</div><div class="day-cell">15</div><div class="day-cell">16</div><div class="day-cell">17</div><div class="day-cell">18</div>
+            <div class="day-cell">19</div><div class="day-cell">20</div><div class="day-cell">21</div><div class="day-cell">22</div><div class="day-cell">23</div><div class="day-cell">24</div><div class="day-cell">25</div>
+            <div class="day-cell">26</div><div class="day-cell"><div class="holiday-date">27</div><div class="holiday">Isra Wal Mi'raj</div></div><div class="day-cell">28</div><div class="day-cell"><div class="holiday-date">29</div><div class="holiday">Chinese New Year</div></div><div class="day-cell">30</div><div class="day-cell">31</div><div class="day-cell empty"></div>
+        </div>
+    </div>
+
+    <div id="feb" class="month-section">
+        <h2 class="month-title">February 2025</h2>
+        <div class="calendar-grid">
+            <div class="day-name">Sun</div><div class="day-name">Mon</div><div class="day-name">Tue</div><div class="day-name">Wed</div><div class="day-name">Thu</div><div class="day-name">Fri</div><div class="day-name">Sat</div>
+            <div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell">1</div>
+            <div class="day-cell">2</div><div class="day-cell">3</div><div class="day-cell">4</div><div class="day-cell">5</div><div class="day-cell">6</div><div class="day-cell">7</div><div class="day-cell">8</div>
+            <div class="day-cell">9</div><div class="day-cell">10</div><div class="day-cell">11</div><div class="day-cell">12</div><div class="day-cell">13</div><div class="day-cell"><div class="holiday-date">14</div><div class="holiday">Valentine's Day</div></div><div class="day-cell">15</div>
+            <div class="day-cell">16</div><div class="day-cell">17</div><div class="day-cell">18</div><div class="day-cell">19</div><div class="day-cell">20</div><div class="day-cell">21</div><div class="day-cell">22</div>
+            <div class="day-cell">23</div><div class="day-cell">24</div><div class="day-cell"><div class="holiday-date">25</div><div class="holiday">EDSA People Power Revolution</div></div><div class="day-cell">26</div><div class="day-cell">27</div><div class="day-cell">28</div><div class="day-cell empty"></div>
+        </div>
+    </div>
+
+    <div id="mar" class="month-section">
+        <h2 class="month-title">March 2025</h2>
+        <div class="calendar-grid">
+            <div class="day-name">Sun</div><div class="day-name">Mon</div><div class="day-name">Tue</div><div class="day-name">Wed</div><div class="day-name">Thu</div><div class="day-name">Fri</div><div class="day-name">Sat</div>
+            <div class="day-cell empty"></div><div class="day-cell">2</div><div class="day-cell">3</div><div class="day-cell">4</div><div class="day-cell">5</div><div class="day-cell">6</div><div class="day-cell">7</div>
+            <div class="day-cell">1</div><div class="day-cell">9</div><div class="day-cell">10</div><div class="day-cell">11</div><div class="day-cell">12</div><div class="day-cell">13</div><div class="day-cell"><div class="holiday-date">14</div><div class="holiday">Maundy Thursday</div></div>
+            <div class="day-cell"><div class="holiday-date">15</div><div class="holiday">Good Friday</div></div><div class="day-cell">16</div><div class="day-cell">17</div><div class="day-cell">18</div><div class="day-cell">19</div><div class="day-cell">20</div><div class="day-cell">21</div><div class="day-cell">22</div>
+            <div class="day-cell">23</div><div class="day-cell">24</div><div class="day-cell">25</div><div class="day-cell">26</div><div class="day-cell">27</div><div class="day-cell">28</div><div class="day-cell">29</div>
+            <div class="day-cell">30</div><div class="day-cell">31</div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div>
+        </div>
+    </div>
+
+    <div id="apr" class="month-section">
+        <h2 class="month-title">April 2025</h2>
+        <div class="calendar-grid">
+            <div class="day-name">Sun</div><div class="day-name">Mon</div><div class="day-name">Tue</div><div class="day-name">Wed</div><div class="day-name">Thu</div><div class="day-name">Fri</div><div class="day-name">Sat</div>
+            <div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell">1</div><div class="day-cell">2</div><div class="day-cell">3</div><div class="day-cell">4</div><div class="day-cell">5</div>
+            <div class="day-cell">6</div><div class="day-cell">7</div><div class="day-cell">8</div><div class="day-cell"><div class="holiday-date">9</div><div class="holiday">Araw ng Kagitingan</div></div><div class="day-cell">10</div><div class="day-cell">11</div><div class="day-cell">12</div>
+            <div class="day-cell">13</div><div class="day-cell">14</div><div class="day-cell">15</div><div class="day-cell">16</div><div class="day-cell">17</div><div class="day-cell">18</div><div class="day-cell">19</div>
+            <div class="day-cell">20</div><div class="day-cell">21</div><div class="day-cell">22</div><div class="day-cell">23</div><div class="day-cell">24</div><div class="day-cell">25</div><div class="day-cell">26</div>
+            <div class="day-cell">27</div><div class="day-cell">28</div><div class="day-cell">29</div><div class="day-cell">30</div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div>
+        </div>
+    </div>
+
+    <div id="may" class="month-section">
+        <h2 class="month-title">May 2025</h2>
+        <div class="calendar-grid">
+            <div class="day-name">Sun</div><div class="day-name">Mon</div><div class="day-name">Tue</div><div class="day-name">Wed</div><div class="day-name">Thu</div><div class="day-name">Fri</div><div class="day-name">Sat</div>
+            <div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell"><div class="holiday-date">1</div><div class="holiday">Labor Day</div></div><div class="day-cell">2</div><div class="day-cell">3</div>
+            <div class="day-cell">4</div><div class="day-cell">5</div><div class="day-cell">6</div><div class="day-cell">7</div><div class="day-cell">8</div><div class="day-cell">9</div><div class="day-cell">10</div>
+            <div class="day-cell">11</div><div class="day-cell">12</div><div class="day-cell">13</div><div class="day-cell">14</div><div class="day-cell">15</div><div class="day-cell">16</div><div class="day-cell">17</div>
+            <div class="day-cell">18</div><div class="day-cell">19</div><div class="day-cell">20</div><div class="day-cell">21</div><div class="day-cell">22</div><div class="day-cell">23</div><div class="day-cell">24</div>
+            <div class="day-cell">25</div><div class="day-cell">26</div><div class="day-cell">27</div><div class="day-cell">28</div><div class="day-cell">29</div><div class="day-cell">30</div><div class="day-cell">31</div>
+        </div>
+    </div>
+
+    <div id="jun" class="month-section">
+        <h2 class="month-title">June 2025</h2>
+        <div class="calendar-grid">
+            <div class="day-name">Sun</div><div class="day-name">Mon</div><div class="day-name">Tue</div><div class="day-name">Wed</div><div class="day-name">Thu</div><div class="day-name">Fri</div><div class="day-name">Sat</div>
+            <div class="day-cell">1</div><div class="day-cell">2</div><div class="day-cell">3</div><div class="day-cell">4</div><div class="day-cell">5</div><div class="day-cell">6</div><div class="day-cell">7</div>
+            <div class="day-cell">8</div><div class="day-cell">9</div><div class="day-cell">10</div><div class="day-cell">11</div><div class="day-cell"><div class="holiday-date">12</div><div class="holiday">Independence Day</div></div><div class="day-cell">13</div><div class="day-cell">14</div>
+            <div class="day-cell">15</div><div class="day-cell">16</div><div class="day-cell">17</div><div class="day-cell">18</div><div class="day-cell">19</div><div class="day-cell">20</div><div class="day-cell">21</div>
+            <div class="day-cell">22</div><div class="day-cell">23</div><div class="day-cell">24</div><div class="day-cell">25</div><div class="day-cell">26</div><div class="day-cell">27</div><div class="day-cell">28</div>
+            <div class="day-cell">29</div><div class="day-cell">30</div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div>
+        </div>
+    </div>
+
+    <div id="jul" class="month-section">
+        <h2 class="month-title">July 2025</h2>
+        <div class="calendar-grid">
+            <div class="day-name">Sun</div><div class="day-name">Mon</div><div class="day-name">Tue</div><div class="day-name">Wed</div><div class="day-name">Thu</div><div class="day-name">Fri</div><div class="day-name">Sat</div>
+            <div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell">1</div><div class="day-cell">2</div><div class="day-cell">3</div><div class="day-cell">4</div><div class="day-cell">5</div>
+            <div class="day-cell">6</div><div class="day-cell">7</div><div class="day-cell">8</div><div class="day-cell">9</div><div class="day-cell">10</div><div class="day-cell">11</div><div class="day-cell">12</div>
+            <div class="day-cell">13</div><div class="day-cell">14</div><div class="day-cell">15</div><div class="day-cell">16</div><div class="day-cell">17</div><div class="day-cell">18</div><div class="day-cell">19</div>
+            <div class="day-cell">20</div><div class="day-cell">21</div><div class="day-cell">22</div><div class="day-cell">23</div><div class="day-cell">24</div><div class="day-cell">25</div><div class="day-cell">26</div>
+            <div class="day-cell">27</div><div class="day-cell">28</div><div class="day-cell">29</div><div class="day-cell">30</div><div class="day-cell">31</div><div class="day-cell empty"></div><div class="day-cell empty"></div>
+        </div>
+    </div>
+
+    <div id="aug" class="month-section">
+        <h2 class="month-title">August 2025</h2>
+        <div class="calendar-grid">
+            <div class="day-name">Sun</div><div class="day-name">Mon</div><div class="day-name">Tue</div><div class="day-name">Wed</div><div class="day-name">Thu</div><div class="day-name">Fri</div><div class="day-name">Sat</div>
+            <div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell">1</div><div class="day-cell">2</div>
+            <div class="day-cell">3</div><div class="day-cell">4</div><div class="day-cell">5</div><div class="day-cell">6</div><div class="day-cell">7</div><div class="day-cell">8</div><div class="day-cell">9</div>
+            <div class="day-cell">10</div><div class="day-cell">11</div><div class="day-cell">12</div><div class="day-cell">13</div><div class="day-cell"><div class="holiday-date">14</div><div class="holiday">Ninoy Aquino Day</div></div><div class="day-cell">15</div><div class="day-cell">16</div>
+            <div class="day-cell">17</div><div class="day-cell">18</div><div class="day-cell">19</div><div class="day-cell">20</div><div class="day-cell"><div class="holiday-date">21</div><div class="holiday">National Heroes Day</div></div><div class="day-cell">22</div><div class="day-cell">23</div>
+            <div class="day-cell">24</div><div class="day-cell">25</div><div class="day-cell">26</div><div class="day-cell">27</div><div class="day-cell">28</div><div class="day-cell">29</div><div class="day-cell">30</div>
+            <div class="day-cell">31</div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div>
+        </div>
+    </div>
+
+    <div id="sep" class="month-section">
+        <h2 class="month-title">September 2025</h2>
+        <div class="calendar-grid">
+            <div class="day-name">Sun</div><div class="day-name">Mon</div><div class="day-name">Tue</div><div class="day-name">Wed</div><div class="day-name">Thu</div><div class="day-name">Fri</div><div class="day-name">Sat</div>
+            <div class="day-cell empty"></div><div class="day-cell">1</div><div class="day-cell">2</div><div class="day-cell">3</div><div class="day-cell">4</div><div class="day-cell">5</div><div class="day-cell">6</div>
+            <div class="day-cell">7</div><div class="day-cell">8</div><div class="day-cell">9</div><div class="day-cell">10</div><div class="day-cell">11</div><div class="day-cell">12</div><div class="day-cell">13</div>
+            <div class="day-cell">14</div><div class="day-cell">15</div><div class="day-cell">16</div><div class="day-cell">17</div><div class="day-cell">18</div><div class="day-cell">19</div><div class="day-cell">20</div>
+            <div class="day-cell">21</div><div class="day-cell">22</div><div class="day-cell">23</div><div class="day-cell">24</div><div class="day-cell">25</div><div class="day-cell">26</div><div class="day-cell">27</div>
+            <div class="day-cell">28</div><div class="day-cell">29</div><div class="day-cell">30</div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div>
+        </div>
+    </div>
+
+    <div id="oct" class="month-section">
+        <h2 class="month-title">October 2025</h2>
+        <div class="calendar-grid">
+            <div class="day-name">Sun</div><div class="day-name">Mon</div><div class="day-name">Tue</div><div class="day-name">Wed</div><div class="day-name">Thu</div><div class="day-name">Fri</div><div class="day-name">Sat</div>
+            <div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell">1</div><div class="day-cell">2</div><div class="day-cell">3</div><div class="day-cell">4</div>
+            <div class="day-cell">5</div><div class="day-cell">6</div><div class="day-cell">7</div><div class="day-cell">8</div><div class="day-cell">9</div><div class="day-cell">10</div><div class="day-cell">11</div>
+            <div class="day-cell">12</div><div class="day-cell">13</div><div class="day-cell">14</div><div class="day-cell">15</div><div class="day-cell">16</div><div class="day-cell">17</div><div class="day-cell">18</div>
+            <div class="day-cell">19</div><div class="day-cell">20</div><div class="day-cell">21</div><div class="day-cell">22</div><div class="day-cell">23</div><div class="day-cell">24</div><div class="day-cell">25</div>
+            <div class="day-cell">26</div><div class="day-cell">27</div><div class="day-cell">28</div><div class="day-cell">29</div><div class="day-cell">30</div><div class="day-cell">31</div><div class="day-cell empty"></div>
+        </div>
+    </div>
+
+    <div id="nov" class="month-section">
+        <h2 class="month-title">November 2025</h2>
+        <div class="calendar-grid">
+            <div class="day-name">Sun</div><div class="day-name">Mon</div><div class="day-name">Tue</div><div class="day-name">Wed</div><div class="day-name">Thu</div><div class="day-name">Fri</div><div class="day-name">Sat</div>
+            <div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell">1</div>
+            <div class="day-cell"><div class="holiday-date">2</div><div class="holiday">All Souls' Day</div></div><div class="day-cell">3</div><div class="day-cell">4</div><div class="day-cell">5</div><div class="day-cell">6</div><div class="day-cell">7</div><div class="day-cell">8</div>
+            <div class="day-cell">9</div><div class="day-cell">10</div><div class="day-cell">11</div><div class="day-cell">12</div><div class="day-cell">13</div><div class="day-cell">14</div><div class="day-cell">15</div>
+            <div class="day-cell">16</div><div class="day-cell">17</div><div class="day-cell">18</div><div class="day-cell">19</div><div class="day-cell">20</div><div class="day-cell">21</div><div class="day-cell">22</div>
+            <div class="day-cell">23</div><div class="day-cell">24</div><div class="day-cell">25</div><div class="day-cell">26</div><div class="day-cell">27</div><div class="day-cell"><div class="holiday-date">28</div><div class="holiday">Bonifacio Day</div></div><div class="day-cell">29</div>
+            <div class="day-cell">30</div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div>
+        </div>
+    </div>
+
+    <div id="dec" class="month-section">
+        <h2 class="month-title">December 2025</h2>
+        <div class="calendar-grid">
+            <div class="day-name">Sun</div><div class="day-name">Mon</div><div class="day-name">Tue</div><div class="day-name">Wed</div><div class="day-name">Thu</div><div class="day-name">Fri</div><div class="day-name">Sat</div>
+            <div class="day-cell empty"></div><div class="day-cell">1</div><div class="day-cell">2</div><div class="day-cell">3</div><div class="day-cell">4</div><div class="day-cell">5</div><div class="day-cell">6</div>
+            <div class="day-cell">7</div><div class="day-cell">8</div><div class="day-cell">9</div><div class="day-cell">10</div><div class="day-cell">11</div><div class="day-cell">12</div><div class="day-cell">13</div>
+            <div class="day-cell">14</div><div class="day-cell">15</div><div class="day-cell">16</div><div class="day-cell">17</div><div class="day-cell">18</div><div class="day-cell">19</div><div class="day-cell">20</div>
+            <div class="day-cell">21</div><div class="day-cell">22</div><div class="day-cell">23</div><div class="day-cell">24</div><div class="day-cell"><div class="holiday-date">25</div><div class="holiday">Christmas Day</div></div><div class="day-cell">26</div><div class="day-cell">27</div>
+            <div class="day-cell">28</div><div class="day-cell">29</div><div class="day-cell"><div class="holiday-date">30</div><div class="holiday">Rizal Day</div></div><div class="day-cell">31</div><div class="day-cell empty"></div><div class="day-cell empty"></div><div class="day-cell empty"></div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on links
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

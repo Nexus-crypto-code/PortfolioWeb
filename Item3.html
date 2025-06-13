@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clint Penaflor - Item 3</title>
+    <link rel="icon" type="x-icon" href="cj.ico">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+    --navy-950: #121633;
+    --navy-900: #1a1f42;
+    --navy-800: #252a52;
+    --purple-400: #a78bfa;
+    --gray-300: #d1d5db;
+    --gray-400: #9ca3af;
+    --gray-700: #374151;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--navy-950), var(--navy-900));
+    color: white;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    background: linear-gradient(45deg, var(--purple-400), #ff6b6b, #4158d0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInUp 1s ease;
+}
+
+.nav-buttons {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(45deg, var(--purple-400), #ff6b6b, #4158d0);
+    background-size: 200% 200%;
+    padding: 12px 24px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(167, 139, 250, 0.4);
+    background-position: right center;
+}
+
+.nav-btn:hover::before {
+    left: 100%;
+}
+
+/* Special styling for portfolio button */
+.portfolio-btn {
+    background: linear-gradient(45deg, #ff6b6b, var(--purple-400), #4158d0) !important;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.portfolio-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.portfolio-btn::before {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.table-container, .form-container {
+    background: var(--navy-900);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+    animation: fadeInUp 1s ease 0.3s both;
+}
+
+/* Fixed gradient border that doesn't interfere with form elements */
+.table-container::before, .form-container::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    background: linear-gradient(45deg, var(--purple-400), #ff6b6b, #4158d0);
+    border-radius: 20px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    background: var(--navy-800);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+caption {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--purple-400);
+    text-shadow: 0 0 10px rgba(167, 139, 250, 0.3);
+}
+
+td {
+    border: 2px solid var(--navy-950);
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 16px;
+    font-weight: 600;
+    background: linear-gradient(135deg, var(--navy-800), var(--navy-900));
+    color: white;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+td:hover {
+    background: linear-gradient(135deg, var(--purple-400), #ff6b6b);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(167, 139, 250, 0.4);
+    z-index: 10;
+}
+
+/* Form Styles - Fixed for proper interaction */
+.form-container {
+    position: relative;
+    z-index: 1;
+}
+
+.form-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: var(--purple-400);
+    text-shadow: 0 0 10px rgba(167, 139, 250, 0.3);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+    position: relative;
+    z-index: 2;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--gray-300);
+    position: relative;
+    z-index: 2;
+}
+
+input[type="text"], input[type="password"], input[list] {
+    width: 100%;
+    padding: 12px 16px;
+    background: var(--navy-800);
+    border: 2px solid var(--gray-700);
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+}
+
+input[type="text"]:focus, input[type="password"]:focus, input[list]:focus {
+    outline: none;
+    border-color: var(--purple-400);
+    box-shadow: 0 0 10px rgba(167, 139, 250, 0.3);
+}
+
+input[type="text"]::placeholder, input[type="password"]::placeholder, input[list]::placeholder {
+    color: var(--gray-400);
+}
+
+.radio-group, .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+    position: relative;
+    z-index: 2;
+}
+
+.radio-item, .checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--purple-400);
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.radio-item label, .checkbox-item label {
+    margin-bottom: 0;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+}
+
+.submit-btn {
+    background: linear-gradient(45deg, var(--purple-400), #ff6b6b, #4158d0);
+    background-size: 200% 200%;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+    pointer-events: auto;
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(167, 139, 250, 0.4);
+    background-position: right center;
+}
+
+.submit-btn:hover::before {
+    left: 100%;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .nav-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .nav-btn {
+        width: 200px;
+        justify-content: center;
+    }
+    
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .table-container, .form-container {
+        padding: 20px;
+    }
+    
+    td {
+        width: 45px;
+        height: 45px;
+        font-size: 14px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-table"></i> TABLE & FORM ITEM 3</h1>
+        
+        <div class="nav-buttons">
+    <a href="index.html" class="nav-btn portfolio-btn">
+        <i class="fas fa-home"></i> Back to Portfolio
+    </a>
+    <a href="Item2.html" class="nav-btn">
+        <i class="fas fa-arrow-left"></i> Back
+    </a>
+</div>
+
+        <div class="content-grid">
+            <div class="table-container">
+                <table>
+                    <caption>COMPLEX TABLE STRUCTURE</caption>
+                    <tr>
+                        <td>1</td>
+                        <td rowspan="4">2</td>
+                        <td rowspan="9">3</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">7</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">8</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">9</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="4">10</td>
+                        <td rowspan="2">11</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3">13</td>
+                        <td>14</td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="form-container">
+                <form>
+                    <h3><i class="fas fa-user-plus"></i> User Registration Form</h3>
+                    
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" placeholder="Enter your username">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Password:</label>
+                        <input type="password" id="email" name="email" placeholder="Enter your password">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Gender:</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="gender1" name="gender" value="Male">
+                                <label for="gender1">Male</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="gender2" name="gender" value="Female">
+                                <label for="gender2">Female</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="gender3" name="gender" value="Others">
+                                <label for="gender3">Others</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Hobby:</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="hobby1" name="Fav_Hobby" value="Reading">
+                                <label for="hobby1">Reading</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="hobby2" name="Fav_Hobby" value="Traveling">
+                                <label for="hobby2">Traveling</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="hobby3" name="Fav_Hobby" value="Cooking">
+                                <label for="hobby3">Cooking</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="hobby4" name="Fav_Hobby" value="Sports">
+                                <label for="hobby4">Sports</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Countries">Country:</label>
+                        <input list="Countries" name="Countries" placeholder="Select your country">
+                        <datalist id="Countries">
+                            <option value="Philippines"></option>
+                            <option value="United Kingdom"></option>
+                            <option value="United States"></option>
+                            <option value="South Korea"></option>
+                        </datalist>
+                    </div>
+
+                    <input type="submit" value="Register" class="submit-btn">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
